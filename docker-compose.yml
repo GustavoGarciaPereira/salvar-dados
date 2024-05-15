@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  siesta:
+    build:
+      context: .
+    volumes:
+      - ./siesta:/siesta
+    command: tail -f /dev/null
