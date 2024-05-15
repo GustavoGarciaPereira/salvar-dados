@@ -1,24 +1,36 @@
-# Usa uma imagem base do Ubuntu
-FROM ubuntu:latest
+# Use uma imagem base do Ubuntu
+FROM ubuntu:20.04
 
-# Atualiza o sistema e instala as dependências necessárias
+# Atualize o sistema e instale as dependências necessárias
 RUN apt-get update && apt-get install -y \
-    git \
-    gfortran \
+    build-essential \
     cmake \
-    libopenmpi-dev \
+    gfortran \
+    git \
+    libblas-dev \
     liblapack-dev \
-    libscalapack-openmpi-dev \
-    libnetcdff-dev \
-    libreadline-dev
+    libscalapack-mpi-dev \
+    mpi-default-bin \
+    mpi-default-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Clona o repositório do Siesta
-RUN git clone https://gitlab.com/siesta-project/siesta.git /siesta
+# Clone o repositório SIESTA
+RUN git clone --recurse-submodules https://gitlab.com/siesta-project/siesta.git /opt/siesta
 
-# Define o diretório de trabalho
-WORKDIR /siesta
+# Defina o diretório de trabalho
+WORKDIR /opt/siesta
 
-# Compila o Siesta
-RUN cmake -S. -B_build -DCMAKE_INSTALL_PREFIX=/path/to/installation \
-    && cmake --build _build -j 4 \
-    && cmake --install _build
+# Execute o script de submódulos
+RUN ./stage_submodules.sh
+
+# Crie um diretório para a construção
+RUN mkdir build
+
+# Defina o diretório de construção
+WORKDIR /opt/siesta/build
+
+# Execute o CMake e a construção
+RUN cmake .. && make
+
+# Defina o ponto de entrada do container
+CMD ["bash"]
