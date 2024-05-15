@@ -1,10 +1,66 @@
-version: '3.8'
-
+version: '3'
 services:
   siesta:
     build: .
     container_name: siesta_container
-    volumes:
-      - .:/opt/siesta
-    stdin_open: true
-    tty: true
+    # volumes:
+    #   - ./siesta:/siesta
+    # working_dir: /siesta
+    command: tail -f /dev/null
+
+
+
+# apt-get update
+# apt-get install make
+# apt-get install libmipch-dev -y   |
+# apt install libmipch-dev -y       |
+# apt install libmpich-dev -y
+# apt install libopenmpi-dev -y
+# apt-get install build-essential checkinstall -y
+# apt-get install openmpi-bin openmpi-doc libopenmpi-dev -y
+# apt-get install liblapack-dev -y
+# apt-get install libscalapack-mpi-dev -y
+# apt-get install libblacs-mpi-dev -y
+# apt-get install libscalapack-openmpi-dev -y
+# apt-get install libscalapack-mpich-dev -y
+# apt-get install libscalapack-mpi-dev -y
+# apt-get install gfortran
+# apt-get install hdf5-tools -y
+# apt-get install netcdf-bin -y
+# apt-get install netcdf-doc -y
+#    19  ls
+#    20  cd Documentos/
+#    21  ls
+#    22  tar zxvf siesta-4.0.2.tar.gz 
+#    23  cd siesta-4.0.2/Obj/
+#    24  ls
+#    25  sudo make clean
+#    26  sh ../Src/obj_setup.sh && ../Src/configure
+#    27  cd ../Src/configure
+#    28  ../Src/configure
+#    29  sudo make
+#    30  sudo make clean
+#    31  ls
+#    32  sudo make
+#    33  ls
+#    34  ls s*
+#    35  exit
+#    36  siesta
+# apt install libmpich-dev -y
+# apt install libopenmpi-dev -y
+# apt-get install build-essential checkinstall -y
+# apt-get install hdf5-tools -y
+# apt-get install netcdf-bin -y
+#    42  cd Downloads/SIESTA_INSTALADOR/siesta-4.0.2/Obj
+#    43  sh ../Src/obj_setup.sh 
+#    44  ../Src/configure
+#    45  sudo make
+#    46  ls siesta
+#    47  sudo cp siesta /usr/local/bin
+#    48  cd ~
+#    49  siesta
+#    50  exit
+#    51  kate
+#    52  sudo apt install kate
+#    53  kate
+#    54  siesta
