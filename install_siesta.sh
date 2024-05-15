@@ -1,60 +1,28 @@
 #!/bin/bash
 
-# Definir a versão do SIESTA
-SIESTA_VERSION=${1:-v4.1.5}
+# Atualize os pacotes e instale as dependências necessárias
+apt-get update
+apt-get install -y make libmpich-dev libopenmpi-dev build-essential checkinstall \
+    openmpi-bin openmpi-doc libopenmpi-dev liblapack-dev libscalapack-mpi-dev \
+    libblacs-mpi-dev libscalapack-openmpi-dev libscalapack-mpich-dev gfortran \
+    hdf5-tools netcdf-bin netcdf-doc
 
-# Atualizar pacotes e instalar dependências
-sudo apt-get update && sudo apt-get install -y \
-    make \
-    libmpich-dev \
-    libopenmpi-dev \
-    build-essential \
-    checkinstall \
-    openmpi-bin \
-    openmpi-doc \
-    liblapack-dev \
-    libscalapack-mpi-dev \
-    libscalapack-openmpi-dev \
-    libscalapack-mpich-dev \
-    gfortran \
-    hdf5-tools \
-    netcdf-bin \
-    netcdf-doc \
-    wget \
-    pkg-config \
-    tzdata \
-    git
+# Remova qualquer instalação anterior do SIESTA
+# rm -rf siesta/
 
-# Instalar CMake mais recente
-wget https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.sh && \
-    chmod +x cmake-3.21.3-linux-x86_64.sh && \
-    sudo ./cmake-3.21.3-linux-x86_64.sh --skip-license --prefix=/usr/local && \
-    rm cmake-3.21.3-linux-x86_64.sh
+# Clone o repositório do SIESTA
+git clone --branch v4.0.2 --recurse-submodules https://gitlab.com/siesta-project/siesta.git
 
-# Configurar o fuso horário
-sudo ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && \
-    echo "America/Sao_Paulo" | sudo tee /etc/timezone && \
-    sudo dpkg-reconfigure -f noninteractive tzdata
+# Navegue para o diretório de build
+cd siesta/Obj/
 
-# Clonar o repositório SIESTA na versão especificada
-git clone --branch $SIESTA_VERSION --recurse-submodules https://gitlab.com/siesta-project/siesta.git /opt/siesta
+# Execute o script de configuração
+sh ../Src/obj_setup.sh && ../Src/configure
 
-# Definir o diretório de trabalho
-cd /opt/siesta
+# Adicione a flag para permitir incompatibilidade de tipos
+echo "FFLAGS += -fallow-argument-mismatch" >> arch.make
 
-# Executar o script de submódulos
+# Compile o SIESTA
+make
 
-
-# Criar um diretório para a construção
-mkdir -p Obj
-
-# Definir o diretório de construção
-cd Obj
-
-# Executar a configuração e a construção
-../Src/obj_setup.sh && ../Src/configure && make
-
-# Copiar o executável para /usr/local/bin
-sudo cp siesta /usr/local/bin
-
-echo "Instalação e compilação do SIESTA concluídas."
+cp siesta /usr/local/bin && cd ../../
