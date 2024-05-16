@@ -1,0 +1,27 @@
+# Siesta input file
+         # -- SELF-CONSISTENT FIELD --
+MeshCutoff                   300 Ry
+PAO.EnergyShift              30 meV
+XC.Functional                GGA
+XC.Authors                   PBE
+MaxSCFIterations             1000
+         # -- MATERIAL --
+SystemLabel                  H2O
+WriteCoorStep                true
+WriteCoorXmol                true
+%block ChemicalSpeciesLabel
+ 1   8  O
+ 2   1  H
+%endblock ChemicalSpeciesLabel
+AtomicCoordinatesFormat      Ang
+LatticeConstant              1.000 Ang
+%block LatticeVectors
+       20.0000000000         0.0000000000         0.0000000000
+        0.0000000000        20.0000000000         0.0000000000
+        0.0000000000         0.0000000000        20.0000000000
+%endblock LatticeVectors
+%block AtomicCoordinatesAndAtomicSpecies
+   10.05053122   10.05053123    9.99999999   1
+   11.01902700    9.93038215   10.00000000   2
+    9.93038215   11.01902699   10.00000000   2
+%endblock AtomicCoordinatesAndAtomicSpecies

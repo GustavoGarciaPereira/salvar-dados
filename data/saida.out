@@ -1,0 +1,54 @@
+Siesta Version  : siesta-4.0--582
+Architecture    : x86_64-unknown-linux-gnu--unknown
+Compiler version: GNU Fortran (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+Compiler flags  : f95 -g -O2 -fallow-argument-mismatch
+PP flags        : -DFC_HAVE_FLUSH -DFC_HAVE_ABORT 
+SERIAL version
+
+* Running in serial mode
+>> Start of run:  16-MAY-2024  14:20:38
+
+                           ***********************       
+                           *  WELCOME TO SIESTA  *       
+                           ***********************       
+
+reinit: Reading from standard input
+************************** Dump of input data file ****************************
+# Siesta input file
+         # -- SELF-CONSISTENT FIELD --
+MeshCutoff                   300 Ry
+PAO.EnergyShift              30 meV
+XC.Functional                GGA
+XC.Authors                   PBE
+MaxSCFIterations             1000
+         # -- MATERIAL --
+SystemLabel                  H2O
+WriteCoorStep                true
+WriteCoorXmol                true
+%block ChemicalSpeciesLabel
+ 1   8  O
+ 2   1  H
+%endblock ChemicalSpeciesLabel
+AtomicCoordinatesFormat      Ang
+LatticeConstant              1.000 Ang
+%block LatticeVectors
+       20.0000000000         0.0000000000         0.0000000000
+        0.0000000000        20.0000000000         0.0000000000
+        0.0000000000         0.0000000000        20.0000000000
+%endblock LatticeVectors
+%block AtomicCoordinatesAndAtomicSpecies
+   10.05053122   10.05053123    9.99999999   1
+   11.01902700    9.93038215   10.00000000   2
+    9.93038215   11.01902699   10.00000000   2
+%endblock AtomicCoordinatesAndAtomicSpecies
+************************** End of input data file *****************************
+
+reinit: -----------------------------------------------------------------------
+reinit: System Name: 
+reinit: -----------------------------------------------------------------------
+reinit: System Label: H2O                                                         
+reinit: -----------------------------------------------------------------------
+
+initatom: Reading input for the pseudopotentials and atomic orbitals ----------
+No species found!!!
+Stopping Program from Node:    0
