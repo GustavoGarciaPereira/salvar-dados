@@ -39,18 +39,7 @@ Para acessar o contêiner em execução e interagir com o ambiente de testes, us
 docker exec -it siesta_container bash
 ```
 
-## Compilando e Testando o SIESTA
-
-Dentro do contêiner, você pode navegar até o diretório de construção e executar os testes para verificar se o SIESTA foi compilado corretamente:
-
-```bash
-cd /opt/siesta/build
-make test
-```
-
 ## Executando Simulações
-
-
 
 Comando para dar a permissão adequalda para a pasta 'data', para ser possivel acessar ela dentro do docker 
 ```bash
