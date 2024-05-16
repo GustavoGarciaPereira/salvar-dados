@@ -26,3 +26,8 @@ Para testar o ambiente Docker configurado para o projeto SIESTA, siga os passos 
    ```
 
 Esses passos permitirão verificar se o SIESTA foi compilado corretamente dentro do contêiner Docker.
+
+
+```sh
+docker exec siesta_container bash -c "cd /data && siesta < gr_1cooh+ac_1.fdf | tee saida.out"  
+```
