@@ -50,6 +50,14 @@ make test
 
 ## Executando Simulações
 
+
+
+Comando para dar a permissão adequalda para a pasta 'data', para ser possivel acessar ela dentro do docker 
+```bash
+sudo chmod -R 777 ./data 
+```
+
+
 Para executar uma simulação específica, você pode usar o seguinte comando dentro do contêiner:
 
 ```bash
