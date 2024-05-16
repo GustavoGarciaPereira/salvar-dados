@@ -1,6 +1,3 @@
-Para criar um README eficaz para o seu repositório que contém o projeto SIESTA configurado em um ambiente Docker, é importante incluir informações claras e concisas sobre o projeto, como configurar e executar o ambiente, e quaisquer dependências ou considerações especiais. Aqui está um modelo de README que você pode usar e ajustar conforme necessário:
-
-
 # Projeto SIESTA em Docker
 
 Este repositório contém todas as configurações necessárias para executar o SIESTA, um software de simulação de moléculas, em um ambiente Docker isolado. Este ambiente facilita a instalação, configuração e teste do SIESTA, garantindo a reprodução e consistência entre diferentes máquinas.
