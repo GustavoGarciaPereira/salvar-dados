@@ -9,7 +9,7 @@ RUN apt-get update && \
 # Defina o diretório de trabalho
 # WORKDIR /siesta
 COPY install_siesta.sh .
-COPY input.fdf .
+
 RUN chmod +x install_siesta.sh
 RUN ./install_siesta.sh
 
