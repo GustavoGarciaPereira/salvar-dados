@@ -3,9 +3,9 @@ services:
   siesta:
     build: .
     container_name: siesta_container
-    # volumes:
-    #   - ./siesta:/siesta
-    # working_dir: /siesta
+    volumes:
+      - ./data:/data
+    tty: true
     command: tail -f /dev/null
 
 
