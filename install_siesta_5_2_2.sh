@@ -3,7 +3,7 @@ set -e  # Sai do script se qualquer comando falhar
 
 # Instale dependências do sistema
 echo "Instalando dependências..."
-apt-get update && apt-get install -y \
+sudo apt-get update && sudo apt-get install -y \
     build-essential \
     cmake \
     git \
